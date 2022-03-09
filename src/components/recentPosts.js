@@ -4,17 +4,18 @@ import { connect } from "react-redux";
 
 import * as actions from "../actions";
 
+import Post from "./post";
+
 class RecentPosts extends Component {
   componentDidMount() {
     this.props.fetchRecentPosts();
   }
 
   renderPosts = function () {
-    const posts = this.props.recentPosts.map((posts, index) => {
-      if(index < 3) {
-        return <li key={index}>{posts.title}</li>;
+    const posts = this.props.recentPosts.map((postMolon, index) => {
+      if (index < 3) {
+        return <Post {...postMolon} key={index} />;
       }
-    
     });
     return posts;
   };
